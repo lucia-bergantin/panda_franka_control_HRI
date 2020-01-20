@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>    
+    
+    
+    <include file="$(find realsense_camera)launch/r200_nodelet_modify_params.launch">
+    </include >  
+    <include file="$(find ar_track_alvar)launch/pr2_indiv_no_kinect.launch">
+    </include > 
+    <include file="$(find franka_visualization)launch/franka_visualization.launch">
+     <arg name="robot_ip" value="100.120.20.50" />
+    </include > 
+    <node pkg="tf" type="static_transform_publisher" name="base_t_camera" args = "0.726 0.751 1.194 0.238 0.869 -0.403 -0.157 /panda_link0 /camera_rgb_optical_frame 100"/>
+    <node pkg="tf" type="static_transform_publisher" name="camera_optical_t_frame" args = " 0 0 0 0.500 -0.500 0.500 0.500 /camera_rgb_optical_frame /camera_link 100"/>
+
+</launch>
